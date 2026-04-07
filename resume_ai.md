@@ -4,7 +4,7 @@ huangzhy77@outlook.com | +86 13502448752 | [github.com/hzy-hits](https://github.
 
 ---
 
-I design systems where AI agents do useful work: I give them deterministic tools and clear boundaries, and they find the answers. At Meituan I make agents testable. In my quant platform I constrain and orchestrate them. In my factor lab I evaluate them with hidden holdouts they can't game. Every project is the same pattern.
+I build the control layer around AI agents. At Meituan I make agent behavior testable. In my quant platform I let agents narrate but not calculate. In my factor lab I give them a search space they cannot escape and a holdout they cannot game. Different products, same pattern: constrain, observe, evaluate.
 
 ## Experience
 

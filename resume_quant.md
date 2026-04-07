@@ -4,7 +4,7 @@ huangzhy77@outlook.com | +86 13502448752 | [github.com/hzy-hits](https://github.
 
 ---
 
-Physics to CS. I build quant research infrastructure in Rust and Python — data pipelines, Bayesian probability models, and anti-overfit validation. I run a production platform covering US equities and A-shares daily; the AI proposes strategies inside a constrained action space, my system validates which ones hold up out-of-sample.
+Physics to CS. I build quant research infrastructure in Rust and Python where every output is an explicit conditional probability and nothing reaches production without surviving hidden holdouts. The AI explores; my system decides what counts as evidence.
 
 ## Experience
 

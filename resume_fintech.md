@@ -4,7 +4,7 @@ huangzhy77@outlook.com | +86 13502448752 | [github.com/hzy-hits](https://github.
 
 ---
 
-I ship production Rust services. My streaming platform has 30 endpoints, full auth, and runs daily. My data platform pulls from 8 financial APIs across two markets. I build systems that work, stay up, and handle real users.
+I ship production Rust services that keep their invariants under concurrency, external APIs, and real users. A streaming control plane with full auth and broadcast lifecycle. A dual-market financial data platform pulling 8 APIs on a daily schedule. Both in production, both mine.
 
 ## Experience
 
