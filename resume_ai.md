@@ -4,46 +4,39 @@ huangzhy77@outlook.com | +86 13502448752 | [github.com/hzy-hits](https://github.
 
 ---
 
-> AI infrastructure engineer building reliable agent systems: deterministic testing, evaluation pipelines, constrained action spaces, and multi-agent orchestration.
+I design systems where AI agents do useful work: I give them deterministic tools and clear boundaries, and they find the answers. At Meituan I make agents testable. In my quant platform I constrain and orchestrate them. In my factor lab I evaluate them with hidden holdouts they can't game. Every project is the same pattern.
 
 ## Experience
 
 **Meituan** — Software Engineer, Core Local Commerce \hfill Jul 2025 – Present
-- Designed a zero-intrusion proxy for LLM agent testing: intercepted model API domains via AOP and redirected traffic to a mock server, enabling deterministic validation of tool-calling behavior without modifying product code
-- Built an LLM-as-Judge evaluation pipeline for insurance and local-services workflows, scoring agent outputs against structured rubrics through internal LLM APIs
-- Automated regression checks for AI-driven workflows, reducing behavioral drift risk across prompt, model, and toolchain changes
+- Transparent proxy intercepts LLM agent API calls via AOP and reroutes to a mock server. The mock is the deterministic tool; "don't touch product code" is the boundary. Agent tool-calling becomes reproducible and testable
+- LLM-as-Judge: LLM scores agent outputs against structured rubrics. AI evaluating AI — automated replacement for manual review
+- Regression testing for AI workflows — catches behavioral drift across prompt, model, and toolchain changes
 
-## Selected Projects
+## Selected Engineering Work
 
-**Light Orchestra (codex-par)** — Parallel AI Coding Agent Orchestrator \hfill Rust | 8,000+ LOC
-- Built a Rust task runner that bypasses MCP serialization by spawning isolated `codex exec --json` processes, cutting multi-task agent workflows from serial execution into dependency-wave parallelism
-- Solved MCP half-duplex deadlock with process-group isolation and graceful multi-stage shutdown, ensuring no zombie processes or orphaned agent workers
-- Exposed a 14-tool MCP server for dynamic dispatch, shared facts, live progress monitoring, and chunked output/stderr reads for Claude-driven orchestration
+**QuantfactorLab** — Agent Evaluation System [Research] \hfill Python
+- The clearest instance of the pattern: LLM agents explore inside a constrained expression language (the deterministic tool). A multi-gate anti-overfit filter and hidden holdout are the boundary — agent only gets pass/fail, can't reverse-engineer the test set
+- Factors auto-retire on performance decay. Budget cap per session limits multiple-testing risk. Deduplication catches factors that look different but capture the same signal
 
-**QuantfactorLab** — Agent Evaluation System for Alpha Research \hfill Python | 10,000+ LOC
-- Designed a constrained factor DSL so LLM agents can only propose formulas within a bounded action space: ~35 operators, expression length and depth limits, whitelisted lookback windows
-- Implemented hidden-holdout evaluation where agents never see out-of-sample metrics and receive only binary PASS/FAIL feedback, preventing reverse-engineering of the test set
-- Added a 5-gate anti-overfit pipeline with bootstrap significance testing and automatic factor retirement on performance decay
+**QuantStack** — Multi-Agent Research Platform [Production] \hfill Python, Rust
+- 4 parallel LLM analysts synthesize daily reports across ~750 US equities and 300+ A-shares. Agents get pre-computed analytics and can only narrate facts — they cannot modify numbers. The constraint is the boundary
+- Underneath: Rust data layer, 15 Bayesian analytics modules, anti-overfit validation. Runs in production daily
 
-**QuantStack** — Multi-Agent Research Platform \hfill Python, Rust | 40,000+ LOC
-- Orchestrated 4 parallel Claude API analyst agents that synthesize daily research reports from pre-computed analytics across ~748 US equities and 300+ Chinese A-shares
-- Kept agents strictly narrational: the validation layer computes all numbers, and agents are only allowed to summarize facts rather than mutate outputs
-- Unified the platform around explicit probability outputs, Bayesian updating, and regime detection so agent-generated commentary stays grounded in auditable model outputs
+**codex-par** — AI Coding Agent Orchestration [Tool] \hfill Rust
+- MCP serializes and deadlocks multi-agent workflows. Bypassed it entirely — each agent gets its own isolated process, scheduled in dependency waves. Ships 14-tool MCP server for dynamic dispatch. 90 min → 30 min
 
-**IvenaMeet** — Agent-Native Control Plane \hfill Rust, React, LiveKit | 18,000+ LOC
-- Shipped an agent API layer (`/agent/v1/context|events|commands`) for room-state retrieval, event streaming, and idempotent command execution with `simulate|execute` modes
-- Designed low-risk command patterns such as `refresh_session`, `send_message`, and `issue_invite`, making the system safe to operate programmatically
+**IvenaMeet** — Agent-Native Streaming Platform [Production] \hfill Rust, React, LiveKit
+- Production streaming platform with an agent API — deterministic tools (API endpoints) and clear boundaries (permissions, rate limits) let AI operators control a live room safely
 
 ## Education
 
 **Brown University** — M.Sc. Computational Science, GPA 3.6/4.0 \hfill Sep 2023 – Jun 2025
-- Built a TCP/IP network stack in Rust and a Weenix OS kernel in C
+- TCP/IP network stack in Rust, OS kernel in C — systems programming from scratch
 
 **Sun Yat-sen University** — B.Sc. Physics, GPA 3.7/4.0 \hfill Sep 2019 – Jun 2023
+- Probability theory, statistical mechanics, numerical methods
 
 ## Skills
 
-**AI Infrastructure:** agent orchestration, deterministic agent testing, LLM-as-Judge, hidden-holdout evaluation, constrained action spaces, MCP protocol
-**Languages:** Rust, Python, TypeScript, SQL
-**Systems:** Tokio, Axum, Redis, DuckDB, SQLite, process isolation, systemd
-**LLM Integration:** Anthropic SDK, evaluation pipeline design, multi-agent orchestration
+Rust, Python, TypeScript, SQL | Axum, Redis, DuckDB | agent evaluation, constrained action spaces, LLM-as-Judge, MCP | Anthropic SDK
