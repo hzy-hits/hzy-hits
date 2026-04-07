@@ -5,7 +5,7 @@
 </h1>
 
 <p align="center">
-  <strong>Zhenyu Huang</strong>&ensp;·&ensp;Hong Kong
+  <strong>Zhenyu Huang</strong>&ensp;·&ensp;Shanghai → Hong Kong (Top Talent Pass)
 </p>
 
 <p align="center">
