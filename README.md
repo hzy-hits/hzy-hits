@@ -102,9 +102,3 @@ MCP deadlocks multi-agent workflows. Bypassed it — process isolation + depende
 </tr>
 </table>
 
----
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=hzy-hits&show_icons=true&theme=github_dark&hide_border=true&hide_title=true&count_private=true" width="49%" />
-  <img src="https://github-readme-streak-stats.herokuapp.com?user=hzy-hits&theme=github-dark-blue&hide_border=true" width="49%" />
-</p>
