@@ -5,6 +5,10 @@
 </h1>
 
 <p align="center">
+  <strong>Zhenyu Huang</strong>&ensp;·&ensp;Hong Kong
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/-Rust-000000?style=flat-square&logo=rust" />
   <img src="https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white" />
   <img src="https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" />
