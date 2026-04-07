@@ -5,11 +5,6 @@
 </h1>
 
 <p align="center">
-  <strong>Zhenyu Huang</strong> · Brown CS (M.Sc.) · Sun Yat-sen Physics (B.Sc.) · Hong Kong
-</p>
-
-<p align="center">
-  <a href="https://github.com/hzy-hits"><img src="https://img.shields.io/badge/-GitHub-181717?style=flat-square&logo=github" /></a>
   <img src="https://img.shields.io/badge/-Rust-000000?style=flat-square&logo=rust" />
   <img src="https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white" />
   <img src="https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" />
@@ -23,12 +18,9 @@
 
 Every project I build follows the same architecture:
 
-```
-┌─────────────────────┐     ┌──────────────────────┐     ┌─────────────────────┐
-│  Deterministic Tools │ ──▶ │  Boundary Functions   │ ──▶ │  AI Agent explores  │
-│  (what it can use)   │     │  (what "good" means)  │     │  (finds the answer) │
-└─────────────────────┘     └──────────────────────┘     └─────────────────────┘
-```
+<p align="center">
+  <img src="architecture.svg" alt="Tools → Boundaries → Agent" width="85%" />
+</p>
 
 <table>
 <tr>
