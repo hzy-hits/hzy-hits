@@ -1,32 +1,33 @@
-# Zhenyu Huang
+# Hi, I'm Zhenyu
 
-Systems engineer building infrastructure that makes AI agents reliable in production — evaluation frameworks, constrained action spaces, orchestration, and deterministic testing.
+I build the infrastructure that makes AI agents useful in production — then I point them at hard problems.
 
-Brown University M.Sc. (Computational Science) + Sun Yat-sen University B.Sc. (Physics). Based in Hong Kong.
+Right now that problem is quantitative research. I built the data pipelines, the evaluation framework, and the anti-overfit guardrails. The AI proposes strategies. My system decides which ones survive.
 
-## Featured Projects
+**Brown CS** (M.Sc.) / **Sun Yat-sen Physics** (B.Sc.) / **Hong Kong**
 
-### [QuantStack](https://github.com/hzy-hits/QuantStack) — Quantitative Research Platform
-Production platform covering ~748 US equities (2x daily) and 300+ Chinese A-shares. 15 analytics modules with a Bayesian probability framework, async Rust data ingestion from 8 APIs, and 4 parallel Claude API analyst agents for automated report synthesis. AI explores the strategy space; the system validates.
+---
 
-`Python` `Rust` `DuckDB` `Claude API`
+### The pattern across my work
 
-### [QuantfactorLab](https://github.com/hzy-hits/QuantfactorLab) — AI-Driven Factor Discovery
-LLM agents propose alpha factors in a constrained expression language. Walk-forward backtesting with multi-gate anti-overfit validation. Agent never sees out-of-sample metrics — only binary pass/fail. Bootstrap significance testing with GPU acceleration. Auto-retirement on performance decay.
+| I build the... | So that AI agents can... | Project |
+|---|---|---|
+| Constrained expression language + walk-forward backtesting + hidden holdout | Discover alpha factors without overfitting | [**QuantStack**](https://github.com/hzy-hits/QuantStack) | 
+| Multi-gate anti-overfit filter + bootstrap significance testing | Propose and get validated — never seeing the test set | [**QuantfactorLab**](https://github.com/hzy-hits/QuantfactorLab) |
+| Mock proxy + LLM-as-Judge pipeline | Be tested deterministically in production | Meituan (work) |
+| Process isolation + wave scheduling + MCP server | Run in parallel without deadlocking | [**codex-par**](https://github.com/hzy-hits/codex-par) |
+| Agent API with simulate/execute modes | Control a live streaming room safely | [**IvenaMeet**](https://github.com/hzy-hits/IvenaMeet) |
 
-`Python` `DuckDB`
+---
 
-### [IvenaMeet](https://github.com/hzy-hits/IvenaMeet) — Private Streaming Platform
-Production self-hosted video platform. Rust control plane with 30 API endpoints: auth, session management, invite lifecycle, broadcast orchestration, real-time chat, and an agent API for programmatic room control.
+### What's running in production
 
-`Rust (Axum)` `React` `LiveKit` `Redis` `SQLite`
+**[QuantStack](https://github.com/hzy-hits/QuantStack)** — delivers daily probability reports across ~750 US equities and 300+ A-shares. Async Rust fetcher pulling 8 market data APIs into DuckDB, 15 Bayesian analytics modules, 4 parallel Claude analysts synthesizing the output. Ships an email every morning before market open.
 
-### [codex-par](https://github.com/hzy-hits/codex-par) — Parallel AI Agent Orchestration
-Runs multiple Codex tasks in parallel, solving MCP serialization and deadlock. Dependency-based wave scheduling, live TUI dashboard, and MCP server with 14 tools for dynamic dispatch.
+**[IvenaMeet](https://github.com/hzy-hits/IvenaMeet)** — private streaming platform I use daily. Rust control plane, React frontend, LiveKit for WebRTC. 30 endpoints, TOTP auth, invite lifecycle, broadcast orchestration. 81 commits and counting.
 
-`Rust` `Tokio` `MCP`
+**[codex-par](https://github.com/hzy-hits/codex-par)** — I got mass-parallelism for AI coding agents by bypassing MCP entirely. Each task gets its own process with `setpgid` isolation, scheduled in dependency waves. Live dashboard, 14-tool MCP server for dynamic dispatch.
 
-### [voice2blog](https://github.com/hzy-hits/voice2blog) — Speech to Markdown
-Rust CLI that records technical speech, transcribes via Whisper, and generates structured Markdown with code blocks and headings.
+---
 
-`Rust`
+`Rust` `Python` `TypeScript` `Axum` `Tokio` `DuckDB` `Redis` `LiveKit` `Claude API` `MCP`
