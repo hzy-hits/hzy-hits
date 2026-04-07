@@ -12,9 +12,9 @@ Right now that problem is quantitative research. I built the data pipelines, the
 
 | I build the... | So that AI agents can... | Project |
 |---|---|---|
-| Constrained expression language + walk-forward backtesting + hidden holdout | Discover alpha factors without overfitting | [**QuantStack**](https://github.com/hzy-hits/QuantStack) | 
-| Multi-gate anti-overfit filter + bootstrap significance testing | Propose and get validated — never seeing the test set | [**QuantfactorLab**](https://github.com/hzy-hits/QuantfactorLab) |
-| Mock proxy + LLM-as-Judge pipeline | Be tested deterministically in production | Meituan (work) |
+| Constrained expression language + walk-forward backtesting + hidden holdout | Discover alpha factors without overfitting | [**QuantStack**](https://github.com/hzy-hits/QuantStack) |
+| Multi-gate validation + bootstrap significance testing | Propose and get validated — never seeing the test set | [**QuantfactorLab**](https://github.com/hzy-hits/QuantfactorLab) |
+| Zero-intrusion mock proxy + LLM-as-Judge pipeline | Be tested deterministically in production | Meituan (work) |
 | Process isolation + wave scheduling + MCP server | Run in parallel without deadlocking | [**codex-par**](https://github.com/hzy-hits/codex-par) |
 | Agent API with simulate/execute modes | Control a live streaming room safely | [**IvenaMeet**](https://github.com/hzy-hits/IvenaMeet) |
 
@@ -22,12 +22,8 @@ Right now that problem is quantitative research. I built the data pipelines, the
 
 ### What's running in production
 
-**[QuantStack](https://github.com/hzy-hits/QuantStack)** — delivers daily probability reports across ~750 US equities and 300+ A-shares. Async Rust fetcher pulling 8 market data APIs into DuckDB, 15 Bayesian analytics modules, 4 parallel Claude analysts synthesizing the output. Ships an email every morning before market open.
+**[QuantStack](https://github.com/hzy-hits/QuantStack)** — delivers daily probability reports across ~750 US equities and 300+ A-shares. Rust data ingestion from 8 market APIs, 15 Bayesian analytics modules, 4 parallel LLM analysts synthesizing the output. Ships every morning before market open.
 
-**[IvenaMeet](https://github.com/hzy-hits/IvenaMeet)** — private streaming platform I use daily. Rust control plane, React frontend, LiveKit for WebRTC. 30 endpoints, TOTP auth, invite lifecycle, broadcast orchestration. 81 commits and counting.
+**[IvenaMeet](https://github.com/hzy-hits/IvenaMeet)** — private streaming platform I use daily. Rust control plane, React frontend, LiveKit for WebRTC. Full auth lifecycle, broadcast orchestration, real-time chat. 81 commits.
 
-**[codex-par](https://github.com/hzy-hits/codex-par)** — I got mass-parallelism for AI coding agents by bypassing MCP entirely. Each task gets its own process with `setpgid` isolation, scheduled in dependency waves. Live dashboard, 14-tool MCP server for dynamic dispatch.
-
----
-
-`Rust` `Python` `TypeScript` `Axum` `Tokio` `DuckDB` `Redis` `LiveKit` `Claude API` `MCP`
+**[codex-par](https://github.com/hzy-hits/codex-par)** — parallel orchestration for AI coding agents. Bypasses MCP entirely — each agent gets its own isolated process, scheduled in dependency waves. Live dashboard, 14-tool MCP server for runtime dispatch.
