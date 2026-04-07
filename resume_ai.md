@@ -9,26 +9,26 @@ I build the control layer around AI agents. At Meituan I make agent behavior tes
 ## Experience
 
 **Meituan** — Software Engineer, Core Local Commerce \hfill Jul 2025 – Present
-- Transparent proxy intercepts LLM agent API calls via AOP and reroutes to a mock server. The mock is the deterministic tool; "don't touch product code" is the boundary. Agent tool-calling becomes reproducible and testable
-- LLM-as-Judge: LLM scores agent outputs against structured rubrics across insurance and life-service workflows. AI evaluating AI — automated replacement for manual review
-- Regression testing for AI workflows — catches behavioral drift across prompt, model, and toolchain changes
+- Agent tool-calling was impossible to regression-test without touching business code. I intercepted model API domains via AOP and rerouted traffic to a mock server, making behavior deterministic inside real product flows
+- Manual review couldn't keep up with agent iteration speed. I replaced it with an LLM-as-Judge pipeline — structured rubrics across insurance and life-service workflows, turning subjective checks into repeatable automated evaluation
+- Prompt, model, and toolchain changes can all shift behavior silently. Regression coverage for AI workflows catches drift before rollout
 
 ## Selected Engineering Work
 
 **QuantfactorLab** — Agent Evaluation System [Research] \hfill Python
-- The clearest instance of the pattern: LLM agents explore inside a constrained expression language (~35 operators, bounded depth, whitelisted parameters — the deterministic tool). A multi-gate anti-overfit filter and hidden holdout are the boundary — agent only gets pass/fail, can't reverse-engineer the test set
-- Factors auto-retire on performance decay. Budget cap per session limits multiple-testing risk. Deduplication catches factors that look different but capture the same signal — using high-dimensional feature space similarity rather than raw correlation
-- The architecture generalizes beyond quant: constrained action space + hidden evaluation + binary feedback is a pattern for any agent safety system
+- Letting LLMs write arbitrary research code would make factor discovery unauditable. I boxed exploration into a constrained DSL — bounded depth, whitelisted parameters, ~35 operators
+- Agents overfit to any feedback channel they can see. I hid out-of-sample metrics completely and return only PASS/FAIL after a multi-gate walk-forward pipeline, preventing holdout gaming while preserving iterative search
+- Autonomous research without guardrails collapses into multiple-testing noise. Budget caps, factor deduplication, and automatic retirement on decay keep it honest. The pattern generalizes beyond quant to any agent safety system
 
 **QuantStack** — Multi-Agent Research Platform [Production] \hfill Python, Rust
-- 4 parallel LLM analysts synthesize daily reports across ~750 US equities and 300+ A-shares. Agents get pre-computed analytics and can only narrate facts — they cannot modify numbers. The constraint is the boundary
-- Underneath: Rust data layer pulling from 8 financial APIs, 15 Bayesian analytics modules, anti-overfit validation. Runs in production daily, delivering reports before market open
+- Multi-agent report generation risks hallucinated arithmetic. 4 parallel Claude analysts read only pre-computed payloads and narrate facts — they cannot touch the numbers
+- To keep that narration grounded: async Rust ingestion from 8 APIs, DuckDB storage, 15 probability-first analytics modules covering ~750 US equities and 300+ A-shares. Runs daily before market open
 
 **codex-par** — AI Coding Agent Orchestration [Tool] \hfill Rust
-- MCP serializes and deadlocks multi-agent workflows. Bypassed it entirely — each agent gets its own isolated process, scheduled in dependency waves. Ships 14-tool MCP server for dynamic dispatch. 90 min → 30 min
+- MCP-based agent workflows serialize and deadlock. I bypassed MCP entirely — isolated process per agent, dependency-wave scheduling, 14-tool MCP server for non-blocking dispatch. 90 min → 30 min
 
 **IvenaMeet** — Agent-Native Streaming Platform [Production] \hfill Rust, React, LiveKit
-- Production streaming platform (30 endpoints, full auth, 81 commits) with an agent API — deterministic tools (API endpoints with simulate/execute modes) and clear boundaries (permissions, rate limits) let AI operators control a live room safely
+- Raw AI access to a live room would be unsafe. I exposed a constrained agent API — simulate/execute modes, idempotency, permission boundaries, rate limits — over a 30-endpoint streaming control plane with full auth lifecycle
 
 ## Education
 

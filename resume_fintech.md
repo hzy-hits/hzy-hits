@@ -9,26 +9,25 @@ I ship production Rust services that keep their invariants under concurrency, ex
 ## Experience
 
 **Meituan** — Software Engineer, Core Local Commerce \hfill Jul 2025 – Present
-- Transparent proxy for deterministic LLM agent testing — intercepts API calls, reroutes to mock server, no product code changes
-- LLM-as-Judge pipeline for automated quality scoring of agent outputs at scale
+- Agent workflows were impossible to test without changing product code. I intercepted model API traffic and rerouted it to a mock server, making tool-calling deterministic under live business flows
+- Manual QA couldn't scale with agent iteration speed. I replaced it with an LLM-as-Judge pipeline for automated output scoring
 
 ## Selected Engineering Work
 
 **IvenaMeet** — Private Streaming Platform [Production] \hfill Rust (Axum), React, LiveKit
-- Self-hosted video platform running 1080p60 for daily use. Rust control plane with 30 HTTP endpoints: room management, broadcast orchestration, real-time chat with message persistence, profile system. 81 commits
-- Full auth lifecycle: TOTP host login, 6 token types with TTL rotation, invite-redeem with atomic Redis Lua scripts, per-operation rate limiting (join 20/min, chat 30/min, broadcast 3/min)
-- Agent API lets AI operators observe room state, execute commands, dry-run actions before committing. Deployed with systemd, cron-based maintenance, reverse proxy topology
-- Avatar upload pipeline: magic-byte format validation, server-side transcoding to 256x256 WebP, storage quota enforcement
+- Real-time room state breaks easily under joins, retries, and privilege changes. I wrote a Rust control plane with 30 HTTP endpoints covering room lifecycle, broadcast orchestration, durable chat, and profile management
+- Broadcast and invite flows are security problems as much as API problems. TOTP host login, scoped token rotation, Redis Lua-backed invite redemption, and per-route rate limits keep state consistent under concurrent actions
+- To make the platform operable instead of demo-only: agent API with dry-run semantics, systemd deployment, cron maintenance, reverse proxy topology, validated avatar upload pipeline
 
 **QuantStack** — Financial Data Platform [Production] \hfill Python, Rust
-- ~748 US equities and 300+ A-shares. Async Rust fetcher integrating 8 financial APIs into DuckDB with rate limiting, retries, idempotent scheduling. 15+ tables per pipeline
-- 15 analytics modules producing daily probability reports. 4 parallel LLM analysts synthesize output, delivered automatically before market open
+- Daily dual-market reporting means 8 external APIs, rate limits, and schema drift can break freshness at any point. Async Rust fetcher with pacing, retries, and idempotent DuckDB persistence across ~748 US equities and 300+ A-shares
+- 15 analytics modules turn raw data into daily probability reports. 4 parallel LLM analysts synthesize the output — constrained to summarize pre-computed facts. Delivered before market open
 
 **Hyperliquid Trading** \hfill Python
 - Trading scaffold on Hyperliquid DEX — API integration, order management, position tracking against on-chain order books
 
 **codex-par** — Parallel Task Runner [Tool] \hfill Rust
-- Parallel runner for AI coding agent tasks — dependency-wave scheduling instead of serial execution. 90-minute workflows finish in 30. Live dashboard and MCP server for runtime dispatch
+- MCP-based multi-agent work serialized and stalled. Dependency-wave scheduling with process isolation, live dashboard, and runtime dispatch. 90-minute workflows → 30
 
 ## Education
 

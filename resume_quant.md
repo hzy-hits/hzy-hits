@@ -9,25 +9,24 @@ Physics to CS. I build quant research infrastructure in Rust and Python where ev
 ## Experience
 
 **Meituan** — Software Engineer, Core Local Commerce \hfill Jul 2025 – Present
-- Transparent proxy intercepts LLM agent API calls and reroutes to a mock server — deterministic agent testing without modifying product code
-- LLM-as-Judge pipeline scores agent outputs against structured rubrics, replacing manual review
-- Regression testing for AI-driven insurance workflows — catches behavioral drift across prompt and model changes
+- Agent tool-calling was impossible to regression-test without touching business code. I intercepted model API traffic at the domain level and rerouted it to a mock server, making behavior deterministic under live conditions
+- Manual review couldn't keep up with agent iteration speed. I replaced it with an LLM-as-Judge pipeline — structured rubrics, regression coverage, drift detection across prompt and model changes
 
 ## Selected Engineering Work
 
 **QuantStack** — Dual-Market Research Platform [Production] \hfill Python, Rust
-- ~748 US equities twice daily, 300+ A-shares daily. Rust data layer pulls from 8 financial APIs (Finnhub, FRED, SEC Edgar, Tushare, AKShare, Polymarket) into DuckDB with rate limiting, retries, and idempotent scheduling
-- 15 analytics modules each output a conditional probability with credible interval and sample size — HMM regime detection, Beta-Binomial Bayesian updating, realized volatility estimators (Yang-Zhang, Garman-Klass)
-- A-share flow score fusing 6 orthogonal signals: northbound capital, margin, block trades, institutional flow, insider activity, tape abnormality — EWMA smoothed, cross-sectionally normalized
-- 4 LLM analysts run in parallel to synthesize reports. They narrate pre-computed facts — cannot modify numbers. Reports delivered automatically before market open
+- Fresh cross-market research every day means 8 external APIs, inconsistent schemas, and rate limits that can break timeliness at any point. I moved ingestion into async Rust with retries, pacing, and idempotent DuckDB writes across ~748 US equities and 300+ A-shares
+- Instead of opaque scores, every analytics module emits an explicit conditional probability with sample size and credible interval. 15 modules total — HMM regime detection, Beta-Binomial updating, Yang-Zhang and Garman-Klass realized volatility
+- A-share flow data is noisy and fragmented across sources. I fused 6 orthogonal signals — northbound capital, margin, block trades, institutional flow, insider activity, tape abnormality — into one cross-sectionally normalized score
+- Report generation under LLM use still has to stay auditable. 4 parallel analysts read only structured payloads and narrate pre-computed facts. They cannot modify numbers. Delivered before market open
 
 **QuantfactorLab** — Factor Discovery with Anti-Overfit Validation [Research] \hfill Python
-- LLM agents propose alpha factors in a constrained expression language (~35 operators, bounded depth, whitelisted lookback windows). System validates each through expanding-window walk-forward backtesting
-- 5-gate anti-overfit filter: IC, IC_IR, turnover, monotonicity, correlation — calibrated separately for US and CN markets. Agent never sees holdout metrics — only pass/fail
-- Bootstrap significance testing with 100k resamples. Factors auto-retire when rolling 60-day IC decays. Deduplication in high-dimensional feature space catches "different formula, same signal" redundancy — physics-inspired geometric approach to factor similarity
+- Letting LLMs search by arbitrary code turns factor mining into uncontrolled multiple testing. I constrained exploration to a DSL — bounded depth, whitelisted lookbacks, narrow operator set
+- Agents overfit to whatever feedback they can see. I hid holdout metrics entirely and return only PASS/FAIL, after a 5-gate walk-forward pipeline calibrated separately for US and CN markets
+- Promoted factors still need to stay honest after launch. 100k-resample bootstrap testing, rolling auto-retirement on IC decay, and geometric deduplication for formulas that look different but capture the same signal
 
 **codex-par** — Research Automation [Tool] \hfill Rust
-- Parallel runner for AI coding agent tasks. Schedules into dependency waves instead of serial execution — 90-minute workflows finish in 30
+- Serialized agent execution was wasting hours on multi-task research workflows. Dependency-wave scheduling turns 90-minute runs into 30
 
 ## Education
 
