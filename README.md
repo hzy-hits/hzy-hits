@@ -33,9 +33,9 @@ Every project I build follows the same architecture:
 <table>
 <tr>
 <td width="20%"><strong>Project</strong></td>
-<td width="25%"><strong>🔧 Tools</strong></td>
-<td width="25%"><strong>🚧 Boundaries</strong></td>
-<td width="30%"><strong>🤖 Agent does</strong></td>
+<td width="25%"><strong>Tools</strong></td>
+<td width="25%"><strong>Boundaries</strong></td>
+<td width="30%"><strong>Agent does</strong></td>
 </tr>
 <tr>
 <td><a href="https://github.com/hzy-hits/QuantStack"><b>QuantStack</b></a></td>
@@ -48,12 +48,6 @@ Every project I build follows the same architecture:
 <td>Factor DSL (~35 ops), backtest engine</td>
 <td>5-gate anti-overfit filter, hidden holdout, JEPA dedup</td>
 <td>Discovers alpha factors autonomously — only gets pass/fail</td>
-</tr>
-<tr>
-<td><b>Meituan</b> <sup>work</sup></td>
-<td>Mock server, eval framework</td>
-<td>Zero code intrusion, LLM-as-Judge rubrics</td>
-<td>Gets tested deterministically</td>
 </tr>
 <tr>
 <td><a href="https://github.com/hzy-hits/codex-par"><b>codex-par</b></a></td>
