@@ -16,14 +16,14 @@ I build the control layer around AI agents. At Meituan I make agent behavior tes
 
 ## Selected Engineering Work
 
-**QuantfactorLab** — Agent Evaluation System [Research] \hfill Python
+**QuantfactorLab** — Constrained Agent Research System [Research] \hfill Python
 - Letting LLMs write arbitrary research code would make factor discovery unauditable. I boxed exploration into a constrained DSL — bounded depth, whitelisted parameters, ~35 operators
 - Agents overfit to any feedback channel they can see. I hid out-of-sample metrics completely and return only PASS/FAIL after a multi-gate walk-forward pipeline, preventing holdout gaming while preserving iterative search
 - Autonomous research without guardrails collapses into multiple-testing noise. Budget caps, factor deduplication, and automatic retirement on decay keep it honest. The pattern generalizes beyond quant to any agent safety system
 
 **QuantStack** — Multi-Agent Research Platform [Production] \hfill Python, Rust
 - Multi-agent report generation risks hallucinated arithmetic. 4 parallel Claude analysts read only pre-computed payloads and narrate facts — they cannot touch the numbers
-- To keep that narration grounded: async Rust ingestion from 8 APIs, DuckDB storage, 15 probability-first analytics modules covering ~750 US equities and 300+ A-shares. Runs daily before market open
+- The narration has to stay grounded, so every number the agents see comes from a validation layer I built underneath — probability models with explicit credible intervals, not opaque scores. Runs daily across two equity markets before market open
 
 **codex-par** — AI Coding Agent Orchestration [Tool] \hfill Rust
 - MCP-based agent workflows serialize and deadlock. I bypassed MCP entirely — isolated process per agent, dependency-wave scheduling, 14-tool MCP server for non-blocking dispatch. 90 min → 30 min
