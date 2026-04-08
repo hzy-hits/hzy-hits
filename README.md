@@ -62,14 +62,6 @@ Private meeting-room control plane with 30 endpoints, full auth lifecycle, durab
 **[codex-par](https://github.com/hzy-hits/codex-par)** `Rust`  
 Parallel runtime for coding agents. I built it because MCP made multi-agent execution too serialized, too opaque, and too deadlock-prone to trust. The fix was to move parallelism back to process isolation, dependency-wave scheduling, and live runtime visibility, cutting a 3-task workflow from roughly 90 minutes to 30.
 
-## If You're Evaluating Me For
+## Resume
 
-- **AI infra / agent reliability**: start with [QuantfactorLab](https://github.com/hzy-hits/QuantfactorLab), [codex-par](https://github.com/hzy-hits/codex-par), and [resume_ai.md](resumes/resume_ai.md)
-- **Quant / research infrastructure**: start with [QuantStack](https://github.com/hzy-hits/QuantStack), [QuantfactorLab](https://github.com/hzy-hits/QuantfactorLab), and [resume_quant.md](resumes/resume_quant.md)
-- **Backend / systems**: start with [IvenaMeet](https://github.com/hzy-hits/IvenaMeet), [codex-par](https://github.com/hzy-hits/codex-par), and [resume_fintech.md](resumes/resume_fintech.md)
-
-## Resume Variants
-
-[AI / Agent Infrastructure](resumes/resume_ai.md) ·
-[Quant / Research Infrastructure](resumes/resume_quant.md) ·
-[Backend / Fintech Systems](resumes/resume_fintech.md)
+[Resume (AI / Agent Infrastructure)](resumes/resume_ai.md)
