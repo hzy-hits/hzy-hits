@@ -9,9 +9,10 @@ I build the control layer around AI agents. At Meituan I make agent behavior tes
 ## Experience
 
 **Meituan** — Software Engineer, Core Local Commerce \hfill Jul 2025 – Present
-- Agent tool-calling was impossible to regression-test without touching business code. I intercepted model API domains via AOP and rerouted traffic to a mock server, making behavior deterministic inside real product flows
-- Manual review couldn't keep up with agent iteration speed. I replaced it with an LLM-as-Judge pipeline — structured rubrics across insurance and life-service workflows, turning subjective checks into repeatable automated evaluation
-- Prompt, model, and toolchain changes can all shift behavior silently. Regression coverage for AI workflows catches drift before rollout
+- Agent quality was one number with no attribution. I split it into 3 evaluation layers (routing / parameters / answer) with per-dimension badcase analysis — the 11-point gap between 96% routing accuracy and 85% answer quality only became visible after decomposition
+- LLM judges drift and flatter by default. Anti-Sycophancy prompting ("default to FAIL"), recheck-on-fail with a stronger model, and 5-round repeat experiments (std=0.27%) turned an unreliable scorer into a calibrated evaluation pipeline. Hallucination detection went from ~70% to 91% positive-case protection through 6-rule assertion grading
+- SSE streaming made existing mock tools useless for agent testing. I proved the boundary, then built a zero-intrusion transparent proxy — LLM decisions become injectable, replayable, and assertable without touching business code. 7/7 verification items passed
+- Reverse-engineered a 1135-file insurance claims system across two service layers, found 5 confirmed bugs through code review including a transaction-boundary defect invisible to interface-level testing
 
 ## Selected Engineering Work
 

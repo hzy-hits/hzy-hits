@@ -9,8 +9,9 @@ Physics to CS. I build quant research infrastructure in Rust and Python where ev
 ## Experience
 
 **Meituan** — Software Engineer, Core Local Commerce \hfill Jul 2025 – Present
-- Agent tool-calling was impossible to regression-test without touching business code. I intercepted model API traffic at the domain level and rerouted it to a mock server, making behavior deterministic under live conditions
-- Manual review couldn't keep up with agent iteration speed. I replaced it with an LLM-as-Judge pipeline — structured rubrics, regression coverage, drift detection across prompt and model changes
+- Agent quality was one number — couldn't tell whether failure was in routing, parameters, or the answer. I designed a 3-layer evaluation framework with 40/40/20 weighting. The 11-point gap between routing and answer quality only surfaced after decomposition
+- Single-run prompt evaluation has 2-3 percentage point noise. 5-round repeat experiments with mean/std tracking, multi-model comparison, and badcase attribution separate signal from measurement error
+- Built a zero-intrusion proxy for deterministic agent testing and an LLM-as-Judge pipeline for automated quality scoring — both without touching business code
 
 ## Selected Engineering Work
 

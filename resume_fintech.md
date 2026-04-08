@@ -9,8 +9,9 @@ I ship production Rust services that keep their invariants under concurrency, ex
 ## Experience
 
 **Meituan** — Software Engineer, Core Local Commerce \hfill Jul 2025 – Present
-- Agent workflows were impossible to test without changing product code. I intercepted model API traffic and rerouted it to a mock server, making tool-calling deterministic under live business flows
-- Manual QA couldn't scale with agent iteration speed. I replaced it with an LLM-as-Judge pipeline for automated output scoring
+- Reverse-engineered a 1135-file dual-layer insurance claims system (BFF + microservice), mapped 69 tables across 6 domains and 4 state machines. Found 5 confirmed bugs through code review, including a transaction split that would silently lose audit records
+- Agent testing at scale was blocked by SSE streaming incompatibility with existing mock tools. I built a zero-intrusion transparent proxy and an LLM-as-Judge pipeline — deterministic agent testing without touching business code
+- Designed a 39-scenario test matrix with feasibility grading, pushing quality coverage from interface regression into business-outcome validation
 
 ## Selected Engineering Work
 
