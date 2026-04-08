@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  I build systems that keep AI useful by giving it explicit tools, hard boundaries, and feedback it cannot game.
+  I build evaluation, testability, and control systems for AI agents and high-uncertainty backends.
 </p>
 
 <p align="center">
@@ -25,7 +25,7 @@
 
 ## Work
 
-I care about systems where failure modes matter:
+I work on systems where failure modes matter:
 
 - AI agents that should be useful without becoming untestable or ungovernable
 - research pipelines where polished output is cheap but statistical honesty is expensive
@@ -37,30 +37,39 @@ Across all three, I keep coming back to the same pattern:
 - **Observe** execution while it is happening, not only after it finishes
 - **Evaluate** with feedback the system cannot game
 
+## Recent Work
+
+**Meituan** `Agent Evals` `Testability Infrastructure`  
+Built evaluation and testability systems for AI agents in core local commerce. I decomposed agent quality into routing / parameter / answer layers, hardened LLM-as-Judge pipelines against drift and flattery, and pushed SSE-based agent testing toward zero-intrusion injection, replay, and assertion.
+
+**Insurance Automation** `System Reverse Engineering` `Quality Systems`  
+Took a 1135-file claims system from interface-level regression toward business-result validation by reverse-engineering service layers, state machines, and shared risk paths, then turning that complexity into scenario matrices, DB-backed checks, and higher-signal automation.
+
+**Mock Agent Demo** `Agent Reliability` `Controlled Execution`  
+Worked on making multi-step agents testable under streaming SSE semantics instead of one-shot HTTP mocks. The core idea was to turn an agent decision chain into something injectable, replayable, and assertable without changing the business code path.
+
 ## Selected Systems
 
 **[QuantStack](https://github.com/hzy-hits/QuantStack)** `Python` `Rust`  
-Dual-market quant research platform covering ~750 US equities and 300+ Chinese A-shares. The core rule is simple: the program computes, the agent narrates. Async Rust ingestion pulls from 8 APIs into DuckDB, 15 analytics modules emit explicit `P(event | conditions)`, and LLM analysts write reports without ever touching the arithmetic.
+Dual-market quant research platform covering ~750 US equities and 300+ Chinese A-shares. It runs daily in production: async Rust ingestion pulls from 8 APIs into DuckDB, 15 analytics modules emit explicit `P(event | conditions)`, and LLM analysts write reports without ever touching the arithmetic.
 
 **[QuantfactorLab](https://github.com/hzy-hits/QuantfactorLab)** `Python`  
-Autonomous factor discovery is useful only if it is hard to fool. I boxed agent search into a constrained DSL, hid holdout metrics completely, and required every candidate to survive walk-forward validation, anti-overfit gates, and post-promotion decay checks.
+Autonomous factor discovery is useful only if it is hard to fool. I boxed agent search into a constrained DSL, hid holdout metrics completely, and required every candidate to survive walk-forward validation, anti-overfit gates, budget caps, and post-promotion decay checks.
 
 **[IvenaMeet](https://github.com/hzy-hits/IvenaMeet)** `Rust` `React` `LiveKit`  
 Private meeting-room control plane with 30 endpoints, full auth lifecycle, durable chat, and broadcast orchestration. The interesting part is not WebRTC itself; it is keeping room state, permissions, and automation safe under retries and concurrent actions.
 
 **[codex-par](https://github.com/hzy-hits/codex-par)** `Rust`  
-Parallel runtime for coding agents. I built it because MCP made multi-agent execution too serialized, too opaque, and too deadlock-prone to trust. The fix was to move parallelism back to process isolation, dependency-wave scheduling, and live runtime visibility.
+Parallel runtime for coding agents. I built it because MCP made multi-agent execution too serialized, too opaque, and too deadlock-prone to trust. The fix was to move parallelism back to process isolation, dependency-wave scheduling, and live runtime visibility, cutting a 3-task workflow from roughly 90 minutes to 30.
 
-## Current Themes
+## If You're Evaluating Me For
 
-- deterministic agent testing and evaluation
-- probability-first systems instead of black-box scoring
-- runtime observability, cancellation, and failure handling
-- Rust services that stay honest under operational pressure
+- **AI infra / agent reliability**: start with [QuantfactorLab](https://github.com/hzy-hits/QuantfactorLab), [codex-par](https://github.com/hzy-hits/codex-par), and [resume_ai.md](resume_ai.md)
+- **Quant / research infrastructure**: start with [QuantStack](https://github.com/hzy-hits/QuantStack), [QuantfactorLab](https://github.com/hzy-hits/QuantfactorLab), and [resume_quant.md](resume_quant.md)
+- **Backend / systems**: start with [IvenaMeet](https://github.com/hzy-hits/IvenaMeet), [codex-par](https://github.com/hzy-hits/codex-par), and [resume_fintech.md](resume_fintech.md)
 
-## More
+## Resume Variants
 
-Role-specific resume variants:
 [AI / Agent Infrastructure](resume_ai.md) ·
 [Quant / Research Infrastructure](resume_quant.md) ·
 [Backend / Fintech Systems](resume_fintech.md)
